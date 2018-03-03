@@ -65,41 +65,18 @@ toolkit:
 
 
 inputs:
-  - example_step_input: Default Value - you can leave this empty if you want to
+  - appmanager_id:
     opts:
-      title: "Example Step Input"
-      summary: Summary. No more than 2-3 sentences.
-      description: |
-        Description of this input.
-
-        Can be Markdown formatted text.
-      is_expand: false
-      is_required: false
-      value_options: []
-
-  - appmanager_id: The app's id in the appmanager
-    opts:
-      title: "Example Step Input"
-      summary: Summary. No more than 2-3 sentences.
-      description: |
-        Description of this input.
-
-        Can be Markdown formatted text.
+      title: "The AM2 id of this app."
+      summary: "Path to IPA"
       is_expand: true
       is_required: true
-      value_options: []
-
-  - binary_path: Path to the to be uploaded binary file.
-      opts:
-        title: "Example Step Input"
-        summary: Summary. No more than 2-3 sentences.
-        description: |
-          Description of this input.
-
-          Can be Markdown formatted text.
-        is_expand: true
-        is_required: true
-        value_options: []
+  - binary_path:
+    opts:
+      title: "The path to the to be uploaded binary file."
+      summary: App Manager URL
+      is_expand: true
+      is_required: true
 
 
 outputs:
