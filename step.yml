@@ -68,6 +68,12 @@ toolkit:
 
 
 inputs:
+  - base_api_url:
+    opts:
+      title: "Base API URL"
+      summary: "The appmanager's base API URL"
+      is_expand: true
+      is_required: true
   - appmanager_id:
     opts:
       title: "Appmanager ID"
