@@ -51,13 +51,14 @@ postVersionPayload="{
     \"id\": \"$m_appmanager_app_id\"
   }
 }"
-postVersionResponse=$(curl -s -0 -X POST \
+postVersionResponse=$(curl --verbose -0 -X POST \
   "$m_base_api_url"/apps/"$m_appmanager_app_id"/versions/ \
   -H "Cache-Control: no-cache" \
   -H "Content-Type: application/json" \
   -d "$postVersionPayload")
 
 echo -e "\\nPost Version Response:"
+echo "$postVersionResponse"
 echo "$postVersionResponse" | jq -C
 
 # parse the new version id from the response body and make the string to a number
@@ -65,7 +66,7 @@ newVersionId=$(echo "$postVersionResponse" | jq .id | bc)
 echo "New Version ID: $newVersionId"
 
 # send the actual binary for the newly created version
-postFileResponse=$(curl -s -X POST \
+postFileResponse=$(curl --verbose -X POST \
   "$m_base_api_url"/version/"$newVersionId"/file/ \
   -H 'Cache-Control: no-cache' \
   -H 'Content-Type: multipart/form-data' \
@@ -74,5 +75,6 @@ postFileResponse=$(curl -s -X POST \
   -F file=@"$m_binary_path")
 
 echo -e "\\nUpload File Response"
+echo "$postFileResponse"
 echo "$postFileResponse" | jq -C
 echo "Deployment done."
