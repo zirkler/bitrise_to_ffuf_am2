@@ -54,6 +54,7 @@ deps:
   - name: git
   - name: wget
   - name: jq
+  - name: bc
   apt_get:
   - name: git
   - name: wget

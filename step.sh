@@ -8,6 +8,17 @@ echo "Appmanager App Id: ${appmanager_id}"
 echo "Binary Path: ${binary_path}"
 echo "Version Code: ${binary_version_code}"
 
+# TODO: Check if all input arguments are set
+
+if ! type "jq" > /dev/null; then
+  echo "Exit since jq not availbable" && exit 1
+fi
+
+if ! type "bc" > /dev/null; then
+  echo "Exit since bc not availbable" && exit 1
+fi
+
+
 postVersionPayload="{
   \"versionNr\": \"${binary_version_code}\",
   \"app\": {
