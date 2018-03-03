@@ -3,14 +3,15 @@
 # $appmanager_app_id := The appmanager id of the app where the binary should be uploaded to
 # $binary_path := The to be uploaded binary
 
-echo "This is the value specified for the input 'example_step_input': ${example_step_input}"
+echo "Received Arguments:"
 echo "Appmanager App Id: ${appmanager_id}"
 echo "Binary Path: ${binary_path}"
+echo "Version Code: ${binary_version_code}"
 
 postVersionPayload="{
-  \"versionNr\": \"555.555.556\",
+  \"versionNr\": \"${binary_version_code}\",
   \"app\": {
-    \"id\": \"$appmanager_app_id\"
+    \"id\": \"${appmanager_app_id}\"
   }
 }"
 
@@ -29,11 +30,6 @@ curl -s -X POST \
   -H 'Content-Type: multipart/form-data' \
   -H 'Postman-Token: 669faafe-6625-0ee1-4054-fee882074171' \
   -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
-  -F file=@"$binary_path"
+  -F file=@"${binary_path}"
 
 echo "Deployment done. See public page: TBA"
-
-
-
-
-

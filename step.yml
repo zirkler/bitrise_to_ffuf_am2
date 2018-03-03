@@ -67,14 +67,20 @@ toolkit:
 inputs:
   - appmanager_id:
     opts:
-      title: "The AM2 id of this app."
-      summary: "Path to IPA"
+      title: "Appmanager ID"
+      summary: "The AM2 id of this app."
       is_expand: true
       is_required: true
   - binary_path:
     opts:
-      title: "The path to the to be uploaded binary file."
-      summary: App Manager URL
+      title: "Binary Path"
+      summary: "The path to the to be uploaded binary file."
+      is_expand: true
+      is_required: true
+  - binary_version_code:
+    opts:
+      title: "Version Code"
+      summary: "The version code of the binary file"
       is_expand: true
       is_required: true
 
