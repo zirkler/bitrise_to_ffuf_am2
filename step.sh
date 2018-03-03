@@ -3,7 +3,6 @@
 # $appmanager_app_id := The appmanager id of the app where the binary should be uploaded to
 # $binary_path := The to be uploaded binary
 
-set -ex
 echo "This is the value specified for the input 'example_step_input': ${example_step_input}"
 echo "Appmanager App Id: ${appmanager_id}"
 echo "Binary Path: ${binary_path}"
