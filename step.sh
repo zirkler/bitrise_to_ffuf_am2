@@ -4,6 +4,7 @@
 # $appmanager_app_id := The appmanager id of the app where the binary should be uploaded to
 # $binary_path := The to be uploaded binary
 # $binary_version_code := The version code of the new binary
+# $notes := notes for this version, e.g. commit message or changelog
 
 while [ $# -gt 0 ]; do
    if [[ $1 == *"--"* ]]; then
@@ -17,6 +18,7 @@ m_base_api_url=${base_api_url}
 m_appmanager_app_id=${appmanager_id}
 m_binary_path=${binary_path}
 m_binary_version_code=${binary_version_code}
+m_notes=${notes}
 
 if [[ -z "$m_appmanager_app_id" ]]; then
   echo "using command line parameter"
@@ -24,6 +26,7 @@ if [[ -z "$m_appmanager_app_id" ]]; then
   m_appmanager_app_id=$appmanager_app_id
   m_binary_path=$binary_path
   m_binary_version_code=$binary_version_code
+  m_notes=$notes
 fi
 
 
@@ -48,6 +51,7 @@ fi
 echo -e "\\n--------------------------------------------------------------------------------"
 postVersionPayload="{
   \"versionNr\": \"$m_binary_version_code\",
+  \"notes\": \"$m_notes\",
   \"app\": {
     \"id\": \"$m_appmanager_app_id\"
   }
