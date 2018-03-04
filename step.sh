@@ -29,12 +29,12 @@ if [[ -z "$m_appmanager_app_id" ]]; then
   m_notes=$notes
 fi
 
-
 echo "Received Arguments:"
-echo "* Base API URL: $m_base_api_url"
-echo "* Appmanager App Id: $m_appmanager_app_id"
-echo "* Binary Path: ${binary_path}"
-echo "* Version Code: ${binary_version_code}"
+echo -e "* Base API URL: $m_base_api_url"
+echo -e "* Appmanager App Id: $m_appmanager_app_id"
+echo -e "* Binary Path: $m_binary_path"
+echo -e "* Version Code: $m_binary_version_code"
+echo -e "* Notes: $m_notes"
 
 # TODO: Check if all input arguments are set
 
