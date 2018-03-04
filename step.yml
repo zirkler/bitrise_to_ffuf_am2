@@ -92,7 +92,7 @@ inputs:
       summary: "The version code of the binary file."
       is_expand: true
       is_required: true
-  - binary_version_code:
+  - notes:
     opts:
       title: "Notes"
       summary: "Additional notes for this release, e.g. commit message or changelog."
