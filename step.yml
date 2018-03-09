@@ -98,6 +98,18 @@ inputs:
       summary: "Additional notes for this release, e.g. commit message or changelog."
       is_expand: true
       is_required: true
+  - binary_identifier:
+    opts:
+      title: "Binary Identifier"
+      summary: "The Bundle Identifier (iOS) or the Application ID (Android)"
+      is_expand: true
+      is_required: true
+  - build_url:
+    opts:
+      title: "Build URL"
+      summary: "URL of the CI build."
+      is_expand: true
+      is_required: true
 
 
 outputs:

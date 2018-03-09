@@ -5,6 +5,8 @@
 # $binary_path := The to be uploaded binary
 # $binary_version_code := The version code of the new binary
 # $notes := notes for this version, e.g. commit message or changelog
+# $build_url := the url to the build of this version
+# $identifier := the identifier of the binary
 
 red=$'\e[1;31m'
 grn=$'\e[1;32m'
@@ -22,13 +24,16 @@ while [ $# -gt 0 ]; do
   shift
 done
 
+# "buildUrl": "asd",
+#  "identifier": "asd.asd.asd",
+
 m_base_api_url=${base_api_url}
 m_appmanager_app_id=${appmanager_id}
 m_binary_path=${binary_path}
 m_binary_version_code=${binary_version_code}
 m_notes=${notes}
-
-
+m_build_url=${build_url} 
+m_binary_identifier=${binary_identifier}
 
 
 if [[ -z "$m_appmanager_app_id" ]]; then
@@ -38,6 +43,8 @@ if [[ -z "$m_appmanager_app_id" ]]; then
   m_binary_path=$binary_path
   m_binary_version_code=$binary_version_code
   m_notes=$notes
+  m_build_url=$build_url
+  m_binary_identifier=$binary_identifier
 fi
 
 echo "Received Arguments:"
@@ -64,6 +71,8 @@ echo -e "\\n---------------------------POSTING NEW VERSION----------------------
 postVersionPayload="{ 
   \"versionNr\": \"$m_binary_version_code\",
   \"notes\": \"$m_notes\",
+  \"buildUrl\": \"$m_build_url\",
+  \"identifier\": \"$m_binary_identifier\",
   \"app\": {
     \"id\": \"$m_appmanager_app_id\"
   }
