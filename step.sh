@@ -52,11 +52,17 @@ echo -e "* Base API URL: $m_base_api_url"
 echo -e "* Appmanager App Id: $m_appmanager_app_id"
 echo -e "* Binary Path: $m_binary_path"
 echo -e "* Version Code: $m_binary_version_code"
-echo -e "* Notes: $m_notes"
+echo "* Notes: $m_notes"
+echo -e "------"
+
+# Make sure to "flatten" the notes string
+m_notes=$(cat  << EOF
+$(echo $m_notes)
+EOF
+)
 
 
 # TODO: Check if all input arguments are set
-
 if ! type "jq" > /dev/null; then
   echo "Exit since jq not availbable" && exit 1
 fi
@@ -77,6 +83,11 @@ postVersionPayload="{
     \"id\": \"$m_appmanager_app_id\"
   }
 }"
+
+echo "******** postVersionPayload ********"
+echo $postVersionPayload
+echo "************************************"
+
 postVersionResponse=$(curl -s -S -X POST \
   "$m_base_api_url"/apps/"$m_appmanager_app_id"/versions/ \
   -H "Cache-Control: no-cache" \
