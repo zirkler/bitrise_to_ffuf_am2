@@ -61,6 +61,11 @@ $(echo $m_notes)
 EOF
 )
 
+# Bitrise is inserting some weird whitespace after newlines, remove those.
+toBePlacedString="\n "
+replaceString="\n"
+m_notes=${m_notes//"$toBePlacedString"/"$replaceString"}
+
 
 # TODO: Check if all input arguments are set
 if ! type "jq" > /dev/null; then
