@@ -66,6 +66,8 @@ toBePlacedString="\n "
 replaceString="\n"
 m_notes=${m_notes//"$toBePlacedString"/"$replaceString"}
 
+# Escape the notes string
+m_notes=$(printf "%q" "$m_notes")
 
 # TODO: Check if all input arguments are set
 if ! type "jq" > /dev/null; then
